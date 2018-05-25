@@ -1,0 +1,29 @@
+{
+  "name": "ironbyte-site",
+  "version": "1.0.0",
+  "description": "Website for IronByte d.o.o.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "keywords": [
+    "ironbyte",
+    "website",
+    "react",
+    "next",
+    "graphql"
+  ],
+  "author": "Nikola Predovan",
+  "license": "ISC",
+  "dependencies": {
+    "@zeit/next-css": "^0.2.0",
+    "@zeit/next-source-maps": "0.0.2",
+    "@zeit/next-typescript": "^1.0.1",
+    "next": "^6.0.3",
+    "postcss-css-variables": "^0.8.1",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0"
+  }
+}
