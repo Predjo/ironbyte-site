@@ -1,6 +1,7 @@
 {
   "extends": "tslint-config-airbnb",
   "rules": {
-    "prefer-array-literal": false
+    "prefer-array-literal": false,
+    "import-name": false
   }
 }

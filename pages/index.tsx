@@ -1,8 +1,8 @@
 
-import Head from 'next/head'
-import style from '../style.css';
+import Head from 'next/head';
+import * as style from '../style.css';
 
-import Link from 'next/link'
+import Link from 'next/link';
 
 export default () => (
   <div>
@@ -20,7 +20,6 @@ export default () => (
       <Link href="/contact">
         <a>Contact</a>
       </Link>
-
     </div>
   </div>
-)
+);

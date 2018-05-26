@@ -1,6 +1,6 @@
 
-import Head from 'next/head'
-import style from '../style.css';
+import Head from 'next/head';
+import * as style from '../style.css';
 
 export default () => (
   <div>
@@ -9,6 +9,6 @@ export default () => (
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
 
-    <dev className = { style.example } >Contact IronByte</dev>
+    <div className = { style.example } >Contact IronByte</div>
   </div>
-)
+);
