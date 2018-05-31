@@ -6,7 +6,7 @@
 Next.js, React, Apollo Client, TypeScript
 
 #### Styles
-CSSNext, PostCSS
+styled-components
 
 #### BackEnd
 Express, GraphQL, Apollo Server, TypeScript
