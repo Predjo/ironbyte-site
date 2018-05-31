@@ -1,4 +1,4 @@
-# IronByte Website for [ironbyte.io](http://www.ironbyte.io/)
+# Website for [ironbyte.io](http://www.ironbyte.io/)
 
 ## Stack
 
