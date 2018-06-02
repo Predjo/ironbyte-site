@@ -2,23 +2,31 @@
 import Head from 'next/head';
 
 import Link from 'next/link';
-import styled, { injectGlobal } from 'styled-components';
-
-injectGlobal`
-  @font-face {
-    font-family: Cebo;
-    src: url('static/fonts/cebo.otf') format('opentype');
-  }
-`;
+import styled from 'styled-components';
+import Button from '../components/Button';
 
 const Title = styled.h1`
-  color: black;
-  font-size: 50px;
+  font-size: 8rem;
+  letter-spacing: 0.3em;
   font-family: Cebo;
+  color: white;
+  margin-bottom: 5px;
 `;
 
 const Small = styled.span`
   font-size: 0.8em;
+`;
+
+const SubTitle = styled.h4`
+  font-size: 1.3rem;
+  letter-spacing: 0.45em;
+  font-family: Cebo;
+  margin-top: 0px;
+`;
+
+const NavigationWrap = styled.div`
+  margin-top: 50px;
+  padding: 20px;
 `;
 
 export default () => (
@@ -28,18 +36,17 @@ export default () => (
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
 
-    <Title>10000110</Title>
-    <Title>1<Small>r0n</Small>B<Small>yte</Small></Title>
     <Title>I<Small>ron</Small>B<Small>yte</Small></Title>
+    <SubTitle>Code hard and code at home</SubTitle>
 
-    <div>
+    <NavigationWrap>
       <Link href="/about">
-        <a>About</a>
+        <Button>About</Button>
       </Link>
       {' '}
       <Link href="/contact">
-        <a>Contact</a>
+        <Button>Contact</Button>
       </Link>
-    </div>
+    </NavigationWrap>
   </div>
 );
