@@ -1,52 +1,43 @@
 
-import Head from 'next/head';
-
-import Link from 'next/link';
+import React, { Component } from 'react';
 import styled from 'styled-components';
+
+import Head from 'next/head';
+import Link from 'next/link';
+
 import Button from '../components/Button';
-
-const Title = styled.h1`
-  font-size: 8rem;
-  letter-spacing: 0.3em;
-  font-family: Cebo;
-  color: white;
-  margin-bottom: 5px;
-`;
-
-const Small = styled.span`
-  font-size: 0.8em;
-`;
-
-const SubTitle = styled.h4`
-  font-size: 1.3rem;
-  letter-spacing: 0.45em;
-  font-family: Cebo;
-  margin-top: 0px;
-`;
+import MainTitle from '../components/MainTitle';
 
 const NavigationWrap = styled.div`
   margin-top: 50px;
   padding: 20px;
 `;
 
-export default () => (
-  <div>
-    <Head>
-      <title>IronByte | Index</title>
-      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-    </Head>
+export interface Props {}
+export interface State {}
 
-    <Title>I<Small>ron</Small>B<Small>yte</Small></Title>
-    <SubTitle>Code hard and code at home</SubTitle>
+export default class Index extends Component<Props, State> {
 
-    <NavigationWrap>
-      <Link href="/about">
-        <Button>About</Button>
-      </Link>
-      {' '}
-      <Link href="/contact">
-        <Button>Contact</Button>
-      </Link>
-    </NavigationWrap>
-  </div>
-);
+  render() {
+    return (
+      <div>
+        <Head>
+          <title>IronByte | Index</title>
+          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        </Head>
+
+        <MainTitle title = "IronByte" subTitle = "Code hard and code at home" />
+
+        <NavigationWrap>
+          <Link href="/about">
+            <Button>About</Button>
+          </Link>
+          {' '}
+          <Link href="/contact">
+            <Button>Contact</Button>
+          </Link>
+        </NavigationWrap>
+      </div>
+    );
+  }
+}

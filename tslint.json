@@ -3,6 +3,8 @@
   "rules": {
     "prefer-array-literal": false,
     "import-name": false,
-    "variable-name": false
+    "variable-name": false,
+    "max-line-length": [true, {"limit": 120, "ignore-pattern": "^import |^export {(.*?)}"}],
+    "no-this-assignment": false
   }
 }
