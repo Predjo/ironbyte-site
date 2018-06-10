@@ -1,5 +1,8 @@
 
 import Head from 'next/head';
+import ContactForm from '../components/ContactForm';
+
+import SubTitle from '../components/SubTitle';
 
 export default () => (
   <div>
@@ -8,6 +11,8 @@ export default () => (
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
 
-    <div>Contact IronByte</div>
+    <SubTitle>Contact IronByte</SubTitle>
+
+    <ContactForm />
   </div>
 );

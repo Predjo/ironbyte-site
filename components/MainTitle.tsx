@@ -3,34 +3,18 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import anime from 'animejs';
 
+import Title from './Title';
+import SubTitle from './SubTitle';
+
 import { renderSplitString } from '../utils/ReactUtils';
 
-const Title = styled.h1`
-  font-size: 8rem;
-  letter-spacing: 0.3em;
-  font-family: Cebo;
-  color: white;
-  margin-bottom: 30px;
-  height: 7rem;
-  position: relative;
-  display: inline-block;
-
+const HiddenTitle = Title.extend`
   > span {
     opacity: 0;
   }
-
-  > span:not(:first-of-type):not(:nth-of-type(5)) {
-    font-size: 0.8em;
-  }
 `;
 
-const SubTitle = styled.h4`
-  font-size: 1.3rem;
-  letter-spacing: 0.45em;
-  font-family: Cebo;
-  margin-top: 0px;
-  height: 1.5rem;
-
+const HiddenSubTitle = SubTitle.extend`
   > span {
     opacity: 0;
   }
@@ -67,6 +51,10 @@ export default class MainTitle extends Component<Props, State> {
   }
 
   componentDidMount() {
+    this.animateTitle();
+  }
+
+  animateTitle () {
 
     const { cursor, title, titleLetters, subTitleLetters } = this;
 
@@ -134,13 +122,14 @@ export default class MainTitle extends Component<Props, State> {
 
     return (
       <>
-        <Title innerRef = { (ref: HTMLHeadingElement) => this.title = ref }>
+        <HiddenTitle innerRef = { (ref: HTMLHeadingElement) => this.title = ref }>
           <Cursor innerRef = { (ref: HTMLDivElement) => this.cursor = ref } />
           { renderSplitString('IronByte', (ref, index) => this.titleLetters[index] = ref) }
-         </Title>
-        <SubTitle innerRef = { (ref: HTMLHeadingElement) => this.subTitle = ref }>
+         </HiddenTitle>
+
+        <HiddenSubTitle innerRef = { (ref: HTMLHeadingElement) => this.subTitle = ref }>
           { renderSplitString(subTitle, (ref, index) => this.subTitleLetters[index] = ref) }
-         </SubTitle>
+         </HiddenSubTitle>
       </>
     );
   }

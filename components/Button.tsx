@@ -11,6 +11,7 @@ const Button = styled.button`
   letter-spacing: 1px;
   cursor: pointer;
   font-size: 1rem;
+  margin: 0 3px;
 
   :active, :focus {
     background-color: #ffffff50;
