@@ -4,7 +4,16 @@ import Button from '../components/Button';
 
 import { isEmail, isEmpty } from 'validator';
 
+import { BreakPoints } from '../constants/StyleConstants';
+
 import styled from 'styled-components';
+
+const StyledForm = styled.form`
+  padding: 10px;
+  position: relative;
+  margin: 0 auto;
+  box-sizing: border-box;
+`;
 
 const StyledInput = styled(Text)`
   background: transparent;
@@ -13,18 +22,33 @@ const StyledInput = styled(Text)`
   color: white;
   padding: 15px 10px;
   outline: none;
-  display: block;
+  display: inline-block;
   margin-bottom: 10px;
+  width: calc(50% - 10px);
+  margin-left: 5px;
+  margin-right: 5px;
+  box-sizing: border-box;
 
   ::placeholder {
     color: white;
   }
 
+  @media (max-width: ${ BreakPoints.small }px) {
+    display: block;
+    width: 100%;
+  }
 `;
 
-const StyledText = StyledInput.withComponent(TextArea);
+const StyledText = styled(StyledInput.withComponent(TextArea))`
+  display: block;
+  margin-bottom: 35px;
+  width: calc(100% - 10px);
+  height: 75px;
+`;
 
-export interface Props {}
+export interface Props {
+  onSubmit: (name: string, email:string, message: string) => void;
+}
 
 export interface State {}
 
@@ -36,10 +60,12 @@ export default class ContactForm extends Component<Props, State> {
 
   render () {
 
+    const { onSubmit } = this.props;
+
     return (
-      <Form onSubmit = { values => console.log(values) } render = { formApi => (
-        <form onSubmit = { formApi.submitForm }>
-          { console.log(formApi) }
+      <Form onSubmit = { ({ name, email, message }) => onSubmit(name, email, message) } render = { formApi => (
+        <StyledForm onSubmit = { formApi.submitForm }>
+
           <StyledInput
             field = "name"
             placeholder = "Name"
@@ -57,8 +83,10 @@ export default class ContactForm extends Component<Props, State> {
             placeholder = "Message"
             validate = { (value = '')  => isEmpty(value) ? 'Message is Required' : null }
            />
+
           <Button type = "submit">Send</Button>
-        </form>
+
+        </StyledForm>
       )} />
     );
   }

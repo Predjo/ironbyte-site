@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { BreakPoints } from '../constants/StyleConstants';
 
 const Button = styled.button`
   background-color: transparent;
@@ -13,8 +14,14 @@ const Button = styled.button`
   font-size: 1rem;
   margin: 0 3px;
 
-  :active, :focus {
+  :active {
     background-color: #ffffff50;
+  }
+
+  @media (max-width: ${ BreakPoints.small }px) {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
   }
 `;
 

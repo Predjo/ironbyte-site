@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { BreakPoints } from '../constants/StyleConstants';
+
 
 const Title = styled.h1`
   font-size: 8rem;
@@ -13,6 +15,12 @@ const Title = styled.h1`
   > span:not(:first-of-type):not(:nth-of-type(5)) {
     font-size: 0.8em;
   }
+
+  @media (max-width: ${ BreakPoints.small }px) {
+    font-size: 5rem;
+    height: 4.8rem;
+  }
+
 `;
 
 export default Title;
