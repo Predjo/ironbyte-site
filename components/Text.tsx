@@ -1,9 +1,13 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-const Text = styled.div`
+export interface TextProps {
+  align?: "left" | "right" | "center";
+}
+
+const Text = styled.div<TextProps>`
   font-size: 1rem;
   color: white;
-  text-align: left;
+  text-align: ${props => props.align || "left"};
   padding: 10px 20px;
   font-family: sans-serif;
 

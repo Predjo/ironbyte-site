@@ -1,9 +1,12 @@
+import Head from "next/head";
+import Box from "../components/Box";
 
-import Head from 'next/head';
-import Box from '../components/Box';
+import Text from "../components/Text";
+import SubTitle from "../components/SubTitle";
 
-import Text from '../components/Text';
-import SubTitle from '../components/SubTitle';
+import Link from "next/link";
+import Button from "../components/Button";
+import NavigationWrap from "../components/NavigationWrap";
 
 export default () => (
   <Box>
@@ -13,10 +16,18 @@ export default () => (
     </Head>
 
     <SubTitle>About</SubTitle>
-
-    <Text>
-      IronByte is a small web development firm.
+    <Text align="center">
+      IronByte is a small web development firm founded in 2018 with a sole
+      purpose of enabling developers in Croatia to work remotly for
+      international startups.
     </Text>
 
+    <br />
+
+    <NavigationWrap>
+      <Link href="/">
+        <Button>Back</Button>
+      </Link>
+    </NavigationWrap>
   </Box>
 );

@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { BreakPoints } from '../constants/StyleConstants';
+import styled from "styled-components";
+import { BreakPoints } from "../constants/StyleConstants";
 
 const Button = styled.button`
   background-color: transparent;
@@ -12,16 +12,18 @@ const Button = styled.button`
   letter-spacing: 1px;
   cursor: pointer;
   font-size: 1rem;
-  margin: 0 3px;
 
   :active {
     background-color: #ffffff50;
   }
 
-  @media (max-width: ${ BreakPoints.small }px) {
+  :disabled {
+    background-color: #ffffff50;
+  }
+
+  @media (max-width: ${BreakPoints.small}px) {
     display: block;
     width: 100%;
-    margin-bottom: 10px;
   }
 `;
 

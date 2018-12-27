@@ -1,7 +1,9 @@
-import React from 'react';
-import App, { Container } from 'next/app';
+import React from "react";
+import App, { Container } from "next/app";
 
-import styled, { injectGlobal } from 'styled-components';
+import styled, { injectGlobal } from "styled-components";
+
+import Footer from "../components/Footer";
 
 injectGlobal`
   @font-face {
@@ -15,6 +17,15 @@ injectGlobal`
     background: linear-gradient(to right, #2C5364, #203A43, #0F2027);
     color: white;
     font-size: 15px;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+
+    #__next {
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
   }
 `;
 
@@ -22,13 +33,15 @@ const Layout = styled.div`
   margin: 0 auto;
   max-width: 1000px;
   text-align: center;
+  height: calc(100% - 50px);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding-bottom: 50px;
 `;
 
 export default class MyApp extends App {
-
-  props: any;
-
-  static async getInitialProps ({ Component, ctx }) {
+  public static async getInitialProps({ Component, ctx }) {
     let pageProps = {};
 
     if (Component.getInitialProps) {
@@ -38,14 +51,17 @@ export default class MyApp extends App {
     return { pageProps };
   }
 
-  render () {
+  public props: any;
+
+  public render() {
     const { Component, pageProps } = this.props;
 
     return (
       <Container>
         <Layout>
-          <Component { ...pageProps } />
-         </Layout>
+          <Component {...pageProps} />
+          <Footer>IronByte © {new Date().getFullYear()}</Footer>
+        </Layout>
       </Container>
     );
   }

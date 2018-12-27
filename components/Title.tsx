@@ -1,14 +1,12 @@
-import styled from 'styled-components';
-import { BreakPoints } from '../constants/StyleConstants';
-
+import styled from "styled-components";
+import { BreakPoints } from "../constants/StyleConstants";
 
 const Title = styled.h1`
-  font-size: 8rem;
   letter-spacing: 0.3em;
   font-family: Cebo;
   color: white;
   margin-bottom: 30px;
-  height: 7rem;
+
   position: relative;
   display: inline-block;
 
@@ -16,11 +14,20 @@ const Title = styled.h1`
     font-size: 0.8em;
   }
 
-  @media (max-width: ${ BreakPoints.small }px) {
+  @media screen and (max-width: ${BreakPoints.small}px) {
+    font-size: 3rem;
+    height: 2.8rem;
+  }
+
+  @media screen and (min-width: ${BreakPoints.small}px + 1) and (max-width: ${BreakPoints.medium}px) {
     font-size: 5rem;
     height: 4.8rem;
   }
 
+  @media screen and (min-width: ${BreakPoints.medium + 1}px) {
+    font-size: 8rem;
+    height: 7rem;
+  }
 `;
 
 export default Title;

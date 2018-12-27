@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
-import { Form, Text, TextArea } from 'react-form';
-import Button from '../components/Button';
+import React from "react";
 
-import { isEmail, isEmpty } from 'validator';
+import { BreakPoints } from "../constants/StyleConstants";
 
-import { BreakPoints } from '../constants/StyleConstants';
+import { withFormik } from "formik";
+import * as Yup from "yup";
 
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const StyledForm = styled.form`
   padding: 10px;
@@ -15,7 +14,7 @@ const StyledForm = styled.form`
   box-sizing: border-box;
 `;
 
-const StyledInput = styled(Text)`
+const StyledInput = styled.input`
   background: transparent;
   border: none;
   border-bottom: 1px solid white;
@@ -33,13 +32,13 @@ const StyledInput = styled(Text)`
     color: white;
   }
 
-  @media (max-width: ${ BreakPoints.small }px) {
+  @media (max-width: ${BreakPoints.small}px) {
     display: block;
-    width: 100%;
+    width: calc(100% - 10px);
   }
 `;
 
-const StyledText = styled(StyledInput.withComponent(TextArea))`
+const StyledText = styled(StyledInput)`
   display: block;
   margin-bottom: 35px;
   width: calc(100% - 10px);
@@ -47,47 +46,74 @@ const StyledText = styled(StyledInput.withComponent(TextArea))`
 `;
 
 export interface Props {
-  onSubmit: (name: string, email:string, message: string) => void;
+  onSubmit: (name: string, email: string, message: string) => void;
+}
+
+export interface Values {
+  name: string;
+  email: string;
+  message: string;
 }
 
 export interface State {}
 
-export default class ContactForm extends Component<Props, State> {
+const ContactForm = props => {
+  const {
+    isValid,
+    values,
+    // touched,
+    // errors,
+    isSubmitting,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    // handleReset,
+    // dirty
+    children
+  } = props;
 
-  constructor(props: Props) {
-    super(props);
+  return (
+    <StyledForm onSubmit={handleSubmit}>
+      <StyledInput
+        id="name"
+        placeholder="Name"
+        value={values.name}
+        onChange={handleChange}
+        onBlur={handleBlur}
+      />
+
+      <StyledInput
+        id="email"
+        placeholder="Email"
+        value={values.email}
+        onChange={handleChange}
+        onBlur={handleBlur}
+      />
+
+      <StyledText
+        id="message"
+        placeholder="Message"
+        value={values.message}
+        onChange={handleChange}
+        onBlur={handleBlur}
+      />
+      {children(isValid, isSubmitting)}
+    </StyledForm>
+  );
+};
+
+const EnhancedContactForm = withFormik<Props, Values>({
+  validationSchema: Yup.object().shape({
+    name: Yup.string().required("Name is required"),
+    email: Yup.string()
+      .email("Invalid email address")
+      .required("Email is required"),
+    message: Yup.string().required("Message is required")
+  }),
+  handleSubmit: (values, { setSubmitting, props }) => {
+    props.onSubmit(values.name, values.email, values.message);
+    setSubmitting(false);
   }
+})(ContactForm);
 
-  render () {
-
-    const { onSubmit } = this.props;
-
-    return (
-      <Form onSubmit = { ({ name, email, message }) => onSubmit(name, email, message) } render = { formApi => (
-        <StyledForm onSubmit = { formApi.submitForm }>
-
-          <StyledInput
-            field = "name"
-            placeholder = "Name"
-            validate = { (value = '')  => isEmpty(value) ? 'Name is Required' : null }
-           />
-
-          <StyledInput
-            field = "email"
-            placeholder = "Email"
-            validate = { (value = '') => isEmpty(value) || !isEmail(value) ? 'Email is Required' : null }
-           />
-
-          <StyledText
-            field = "message"
-            placeholder = "Message"
-            validate = { (value = '')  => isEmpty(value) ? 'Message is Required' : null }
-           />
-
-          <Button type = "submit">Send</Button>
-
-        </StyledForm>
-      )} />
-    );
-  }
-}
+export default EnhancedContactForm;
