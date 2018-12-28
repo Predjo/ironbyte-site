@@ -14,6 +14,7 @@
     "object-literal-sort-keys": false,
     "no-submodule-imports": false,
     "no-empty-interface": false,
-    "no-unused-expression": [true, "allow-tagged-template"]
+    "no-unused-expression": [true, "allow-tagged-template"],
+    "no-implicit-dependencies": false
   }
 }

@@ -29,7 +29,7 @@ const TitleNumber = styled.div`
   }
 `;
 
-const HiddenSubTitle = SubTitle.extend`
+const HiddenSubTitle = styled(SubTitle)`
   > span {
     opacity: ${(props: TitleProps) => (props.visible ? 1 : 1)};
   }
