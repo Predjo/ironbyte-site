@@ -28,7 +28,7 @@ export default class Index extends Component<Props, State> {
         <NavigationWrap>
           <Link href="/about">
             <Button>About</Button>
-          </Link>{" "}
+          </Link>
           <Link href="/contact">
             <Button>Contact</Button>
           </Link>

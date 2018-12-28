@@ -10,7 +10,7 @@ const Title = styled.h1`
   position: relative;
   display: inline-block;
 
-  > span:not(:first-of-type):not(:nth-of-type(5)) {
+  span:not(:first-of-type):not(:nth-of-type(5)) {
     font-size: 0.8em;
   }
 
@@ -19,7 +19,8 @@ const Title = styled.h1`
     height: 2.8rem;
   }
 
-  @media screen and (min-width: ${BreakPoints.small}px + 1) and (max-width: ${BreakPoints.medium}px) {
+  @media screen and (min-width: ${BreakPoints.small +
+      1}px) and (max-width: ${BreakPoints.medium}px) {
     font-size: 5rem;
     height: 4.8rem;
   }

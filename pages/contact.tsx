@@ -11,7 +11,9 @@ import Link from "next/link";
 import Button from "../components/Button";
 import NavigationWrap from "../components/NavigationWrap";
 
-const SuccessText = Text.extend`
+import styled from "styled-components";
+
+const SuccessText = styled(Text)`
   text-align: center;
   font-style: ittalic;
 `;

@@ -19,6 +19,7 @@ const Button = styled.button`
 
   :disabled {
     background-color: #ffffff50;
+    cursor: not-allowed;
   }
 
   @media (max-width: ${BreakPoints.small}px) {

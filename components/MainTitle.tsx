@@ -11,15 +11,9 @@ interface TitleProps {
   visible?: boolean;
 }
 
-const HiddenTitle = Title.extend`
-  > span {
-    opacity: ${(props: TitleProps) => (props.visible ? 1 : 0)};
-  }
-`;
-
 const TitleLetter = styled.div`
   > span {
-    opacity: 0;
+    opacity: ${(props: TitleProps) => (props.visible ? 1 : 0)};
   }
 `;
 
@@ -28,9 +22,10 @@ const TitleNumber = styled.div`
   top: 0px;
   left: 0px;
 
-  letter-spacing: 0.43em;
+  letter-spacing: 0.33em;
   > span {
     opacity: 0;
+    font-size: 1em !important;
   }
 `;
 
@@ -185,17 +180,17 @@ export default class MainTitle extends Component<Props, State> {
 
     return (
       <>
-        <HiddenTitle innerRef={this.titleRef} visible={animationDone}>
+        <Title innerRef={this.titleRef}>
           <Cursor innerRef={this.cursorRef} />
 
-          <TitleLetter innerRef={this.titleLettersRef}>
+          <TitleLetter innerRef={this.titleLettersRef} visible={animationDone}>
             {renderSplitString("IronByte")}
           </TitleLetter>
 
           <TitleNumber innerRef={this.titleNumbersRef}>
             {renderSplitString("00011010")}
           </TitleNumber>
-        </HiddenTitle>
+        </Title>
 
         <HiddenSubTitle
           visible={animationDone}
