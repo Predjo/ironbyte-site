@@ -52,8 +52,6 @@ export default () => (
       Član uprave i direktor: Nikola Predovan
     </SmallText>
 
-    <br />
-
     <NavigationWrap>
       <Link href="/">
         <Button>Back</Button>

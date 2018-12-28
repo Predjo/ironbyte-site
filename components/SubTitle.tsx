@@ -6,9 +6,10 @@ const SubTitle = styled.h4`
   font-family: Cebo;
   margin-top: 0px;
   height: 1.5rem;
+  line-height: 1.5rem;
 
   @media screen and (max-width: ${BreakPoints.small}px) {
-    font-size: 0.65rem;
+    font-size: 0.85rem;
   }
 
   @media screen and (min-width: ${BreakPoints.small +

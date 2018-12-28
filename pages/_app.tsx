@@ -2,6 +2,7 @@ import React from "react";
 import App, { Container } from "next/app";
 
 import styled, { injectGlobal } from "styled-components";
+import { BreakPoints } from "../constants/StyleConstants";
 
 import Footer from "../components/Footer";
 
@@ -38,6 +39,11 @@ const Layout = styled.div`
   align-items: center;
   display: flex;
   padding-bottom: 50px;
+  overflow: auto;
+
+  @media screen and (max-height: ${BreakPoints.tiny}px) {
+    align-items: flex-start;
+  }
 `;
 
 export default class MyApp extends App {
