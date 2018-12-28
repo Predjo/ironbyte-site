@@ -18,21 +18,8 @@
   "author": "Nikola Predovan",
   "license": "ISC",
   "dependencies": {
-    "@zeit/next-source-maps": "0.0.3",
-    "@zeit/next-typescript": "^1.1.1",
-    "animejs": "^2.2.0",
-    "apollo-server-express": "^2.3.1",
-    "body-parser": "^1.18.3",
     "express": "^4.16.4",
-    "formik": "^1.4.1",
-    "graphql": "^14.0.2",
-    "next": "^7.0.2",
-    "npm": "^6.1.0",
-    "react": "^16.4.0",
-    "react-dom": "^16.4.0",
-    "styled-components": "^3.3.0",
-    "typescript": "^3.2.2",
-    "yup": "^0.26.6"
+    "next": "^7.0.2"
   },
   "devDependencies": {
     "@types/body-parser": "^1.17.0",
@@ -41,13 +28,22 @@
     "@types/next": "^7.0.6",
     "@types/node": "^10.1.2",
     "@types/react": "^16.3.14",
-    "@types/yup": "^0.26.3",
     "@types/styled-components": "^4.1.4",
+    "@types/yup": "^0.26.3",
+    "@zeit/next-source-maps": "0.0.3",
+    "@zeit/next-typescript": "^1.1.1",
+    "animejs": "^2.2.0",
     "babel-plugin-styled-components": "^1.5.1",
     "fork-ts-checker-webpack-plugin": "^0.5.2",
+    "formik": "^1.4.1",
     "nodemon": "^1.18.9",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "styled-components": "^3.3.0",
     "ts-node": "^7.0.1",
     "tslint": "^5.12.0",
-    "tslint-config-prettier": "^1.17.0"
+    "tslint-config-prettier": "^1.17.0",
+    "typescript": "^3.2.2",
+    "yup": "^0.26.6"
   }
 }
