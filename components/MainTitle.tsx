@@ -17,12 +17,18 @@ const HiddenTitle = Title.extend`
   }
 `;
 
+const TitleLetter = styled.div`
+  > span {
+    opacity: 0;
+  }
+`;
+
 const TitleNumber = styled.div`
   position: absolute;
   top: 0px;
   left: 0px;
-  width: 100%;
-  letter-spacing: 0.4em;
+
+  letter-spacing: 0.43em;
   > span {
     opacity: 0;
   }
@@ -39,6 +45,7 @@ const Cursor = styled.div`
   border-left: 3px solid white;
   height: 100%;
   position: absolute;
+  left: 0;
   opacity: 0;
 `;
 
@@ -52,18 +59,14 @@ export interface State {}
 let animationDone: boolean = false;
 
 export default class MainTitle extends Component<Props, State> {
-  private title?: HTMLHeadingElement;
-  private titleLetters: HTMLSpanElement[];
-  private titleNumbers: HTMLSpanElement[];
-  private subTitleLetters: HTMLSpanElement[];
-  private cursor?: HTMLDivElement;
+  private titleRef = React.createRef<HTMLHeadingElement>();
+  private titleLettersRef = React.createRef<HTMLDivElement>();
+  private titleNumbersRef = React.createRef<HTMLDivElement>();
+  private subTitleLettersRef = React.createRef<HTMLDivElement>();
+  private cursorRef = React.createRef<HTMLDivElement>();
 
   constructor(props: Props) {
     super(props);
-
-    this.titleLetters = [];
-    this.titleNumbers = [];
-    this.subTitleLetters = [];
   }
 
   public componentDidMount() {
@@ -74,7 +77,15 @@ export default class MainTitle extends Component<Props, State> {
   }
 
   public animateTitle() {
-    const { cursor, title, titleLetters, titleNumbers, subTitleLetters } = this;
+    const cursor = this.cursorRef.current;
+    const title = this.titleRef.current;
+    const titleLetters = this.titleLettersRef.current;
+    const titleNumbers = this.titleNumbersRef.current;
+    const subTitleLetters = this.subTitleLettersRef.current;
+
+    const titleNumberList = Array.from(titleNumbers!.childNodes);
+    const titleLetterList = Array.from(titleLetters!.childNodes);
+    const subTitleLetterList = Array.from(subTitleLetters!.childNodes);
 
     anime
       .timeline({ loop: false })
@@ -96,14 +107,14 @@ export default class MainTitle extends Component<Props, State> {
 
       .add({
         targets: cursor,
-        translateX: [0, (title && title.offsetWidth) || 0],
+        translateX: [0, title!.offsetWidth || 0],
         easing: "easeOutExpo",
         duration: 900,
         delay: 100
       })
 
       .add({
-        targets: titleNumbers,
+        targets: titleNumberList,
         translateX: [40, 0],
         translateZ: 0,
         opacity: [0, 1],
@@ -124,7 +135,7 @@ export default class MainTitle extends Component<Props, State> {
       })
 
       .add({
-        targets: titleNumbers.reverse(),
+        targets: titleNumberList.reverse(),
         translateX: [40, 0],
         translateZ: 0,
         opacity: [1, 0],
@@ -137,7 +148,7 @@ export default class MainTitle extends Component<Props, State> {
       })
 
       .add({
-        targets: titleLetters.reverse(),
+        targets: titleLetterList.reverse(),
         translateX: [40, 0],
         translateZ: 0,
         opacity: [0, 1],
@@ -156,7 +167,7 @@ export default class MainTitle extends Component<Props, State> {
       })
 
       .add({
-        targets: subTitleLetters,
+        targets: subTitleLetterList,
         translateX: [40, 0],
         translateZ: 0,
         opacity: [0, 1],
@@ -174,28 +185,23 @@ export default class MainTitle extends Component<Props, State> {
 
     return (
       <>
-        <HiddenTitle
-          innerRef={(ref: any) => (this.title = ref)}
-          visible={animationDone}
-        >
-          <Cursor innerRef={(ref: any) => (this.cursor = ref)} />
-          {renderSplitString(
-            "IronByte",
-            (ref, index) => (this.titleLetters[index!] = ref)
-          )}
-          <TitleNumber>
-            {renderSplitString(
-              "10010111",
-              (ref, index) => (this.titleNumbers[index!] = ref)
-            )}
+        <HiddenTitle innerRef={this.titleRef} visible={animationDone}>
+          <Cursor innerRef={this.cursorRef} />
+
+          <TitleLetter innerRef={this.titleLettersRef}>
+            {renderSplitString("IronByte")}
+          </TitleLetter>
+
+          <TitleNumber innerRef={this.titleNumbersRef}>
+            {renderSplitString("00011010")}
           </TitleNumber>
         </HiddenTitle>
 
-        <HiddenSubTitle visible={animationDone}>
-          {renderSplitString(
-            subTitle,
-            (ref, index) => (this.subTitleLetters[index!] = ref)
-          )}
+        <HiddenSubTitle
+          visible={animationDone}
+          innerRef={this.subTitleLettersRef}
+        >
+          {renderSplitString(subTitle)}
         </HiddenSubTitle>
       </>
     );

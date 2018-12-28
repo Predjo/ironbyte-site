@@ -16,10 +16,7 @@ export default class MyDocument extends Document {
   public render() {
     return (
       <html>
-        <Head>
-          <title>IronByte</title>
-          {this.props.styleTags}
-        </Head>
+        <Head>{this.props.styleTags}</Head>
 
         <body>
           <Main />

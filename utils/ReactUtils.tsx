@@ -1,18 +1,10 @@
 import React from "react";
 
-export function renderSplitString(
-  string: string,
-  refHandle: (ref: HTMLSpanElement, index?: number) => void,
-  letterClassName?: string
-) {
+export function renderSplitString(string: string, letterClassName?: string) {
   return (
     <>
       {string.split("").map((letter: string, index: number) => (
-        <span
-          key={index}
-          className={letterClassName}
-          ref={ref => refHandle(ref!, index)}
-        >
+        <span key={index} className={letterClassName}>
           {letter}
         </span>
       ))}
