@@ -104,7 +104,7 @@ export default class MainTitle extends Component<Props, State> {
         targets: cursor,
         translateX: [0, title!.offsetWidth || 0],
         easing: "easeOutExpo",
-        duration: 900,
+        duration: 800,
         delay: 100
       })
 

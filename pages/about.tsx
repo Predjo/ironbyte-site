@@ -11,7 +11,7 @@ import NavigationWrap from "../components/NavigationWrap";
 import styled from "styled-components";
 
 const SmallText = styled(Text)`
-  font-size: 0.7em;
+  font-size: 0.6em;
 `;
 
 const Separator = styled.div`
@@ -27,9 +27,15 @@ export default () => (
 
     <SubTitle>About</SubTitle>
     <Text align="center">
-      IronByte is a small web development firm founded in 2018 with a sole
-      purpose of enabling developers in Croatia to work remotly for
-      international startups.
+      <p>
+        IronByte is a small web development firm founded in 2018 <br /> with a
+        sole purpose of enabling developers in Croatia to work remotly for
+        international startups.
+      </p>
+      <p>
+        Currently offering services of web and mobile app consulting and
+        development.
+      </p>
     </Text>
 
     <Separator />
