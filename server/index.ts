@@ -15,8 +15,8 @@ const dev = process.env.NODE_ENV !== "production";
 const nextApp = next({ dev });
 const handle = nextApp.getRequestHandler();
 
-// Read port number from arguiments or default to 3000
-const PORT = argv.port || 3000;
+// Read port number from arguiments or config
+const PORT = argv.port || config.get("port");
 
 // Set body parameter parsing
 const server = express();

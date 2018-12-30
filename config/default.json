@@ -4,5 +4,6 @@
     "subject": "Message from IronByte site",
     "user": "",
     "pass": ""
-  }
+  },
+  "port": 3000
 }
