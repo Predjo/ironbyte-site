@@ -3,10 +3,10 @@
 ## Stack
 
 #### FrontEnd
-Next.js, React, Apollo Client, TypeScript
+Next.js, React, TypeScript
 
 #### Styles
 styled-components
 
 #### BackEnd
-Express, GraphQL, Apollo Server, TypeScript
+Express, TypeScript
