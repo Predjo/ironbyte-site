@@ -114,7 +114,7 @@ export default class MainTitle extends Component<Props, State> {
         translateZ: 0,
         opacity: [0, 1],
         easing: "easeOutExpo",
-        offset: "-=775",
+        offset: "-=700",
         duration: 700,
         delay: (_el, i) => {
           return 30 * (i + 1);
