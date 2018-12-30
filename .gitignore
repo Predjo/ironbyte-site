@@ -1,3 +1,6 @@
+#Junk
+.DS_Store
+
 # Logs
 logs
 *.log
@@ -59,3 +62,7 @@ typings/
 
 # next.js build output
 .next
+
+# config files
+config/development.json
+config/production.json

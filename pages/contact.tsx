@@ -11,6 +11,8 @@ import Link from "next/link";
 import Button from "../components/Button";
 import NavigationWrap from "../components/NavigationWrap";
 
+import { toast } from "react-toastify";
+
 import styled from "styled-components";
 
 const SuccessText = styled(Text)`
@@ -19,20 +21,59 @@ const SuccessText = styled(Text)`
 `;
 
 export interface Props {}
-export interface State {}
+export interface State {
+  emailSent: boolean;
+}
 
 class ContantPage extends Component<Props, State> {
   public state = {
     emailSent: false
   };
 
-  public sendMessage = (name: string, email: string, message: string) => {
-    this.setState({
-      emailSent: true,
-      name,
-      email,
-      message
-    });
+  public sendMessage = (
+    name: string,
+    email: string,
+    message: string,
+    done: () => void
+  ) => {
+    const showError = () => {
+      toast.error("There was a problem with sending your message.", {
+        position: toast.POSITION.BOTTOM_RIGHT
+      });
+
+      done();
+    };
+
+    fetch("/message", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        message
+      })
+    })
+      .then(data => {
+        if (data.status !== 200) {
+          throw new Error();
+        }
+
+        toast.info("Message send successfully!", {
+          position: toast.POSITION.BOTTOM_RIGHT
+        });
+
+        done();
+
+        this.setState({
+          emailSent: true
+        });
+      })
+      .catch(() => {
+        showError();
+        done();
+      });
   };
 
   public render() {

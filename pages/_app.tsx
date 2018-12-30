@@ -6,6 +6,9 @@ import { BreakPoints } from "../constants/StyleConstants";
 
 import Footer from "../components/Footer";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 injectGlobal`
   @font-face {
     font-family: Cebo;
@@ -68,6 +71,8 @@ export default class MyApp extends App {
           <Component {...pageProps} />
           <Footer>IronByte © {new Date().getFullYear()}</Footer>
         </Layout>
+
+        <ToastContainer />
       </Container>
     );
   }

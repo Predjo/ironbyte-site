@@ -32,6 +32,11 @@ const StyledInput = styled.input`
     color: white;
   }
 
+  :disabled {
+    background-color: #ffffff50;
+    cursor: not-allowed;
+  }
+
   @media (max-width: ${BreakPoints.small}px) {
     display: block;
     width: calc(100% - 10px);
@@ -46,7 +51,12 @@ const StyledText = styled(StyledInput)`
 `;
 
 export interface Props {
-  onSubmit: (name: string, email: string, message: string) => void;
+  onSubmit: (
+    name: string,
+    email: string,
+    message: string,
+    done: () => void
+  ) => void;
 }
 
 export interface Values {
@@ -80,6 +90,7 @@ const ContactForm = props => {
         value={values.name}
         onChange={handleChange}
         onBlur={handleBlur}
+        disabled={isSubmitting}
       />
 
       <StyledInput
@@ -88,6 +99,7 @@ const ContactForm = props => {
         value={values.email}
         onChange={handleChange}
         onBlur={handleBlur}
+        disabled={isSubmitting}
       />
 
       <StyledText
@@ -96,6 +108,7 @@ const ContactForm = props => {
         value={values.message}
         onChange={handleChange}
         onBlur={handleBlur}
+        disabled={isSubmitting}
       />
       {children(isValid, isSubmitting)}
     </StyledForm>
@@ -111,8 +124,10 @@ const EnhancedContactForm = withFormik<Props, Values>({
     message: Yup.string().required("Message is required")
   }),
   handleSubmit: (values, { setSubmitting, props }) => {
-    props.onSubmit(values.name, values.email, values.message);
-    setSubmitting(false);
+    setSubmitting(true);
+    props.onSubmit(values.name, values.email, values.message, () => {
+      setSubmitting(false);
+    });
   }
 })(ContactForm);
 
