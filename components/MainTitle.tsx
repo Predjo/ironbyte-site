@@ -13,7 +13,7 @@ interface TitleProps {
 
 const TitleLetter = styled.div`
   > span {
-    opacity: ${(props: TitleProps) => (props.visible ? 1 : 0)};
+    opacity: ${(props: TitleProps) => (props.visible ? 1 : 1)};
   }
 `;
 
@@ -23,6 +23,7 @@ const TitleNumber = styled.div`
   left: 0px;
 
   letter-spacing: 0.33em;
+  margin-top: 0.2em;
   > span {
     opacity: 0;
     font-size: 1em !important;
@@ -38,9 +39,10 @@ const HiddenSubTitle = styled(SubTitle)`
 const Cursor = styled.div`
   display: inline-block;
   border-left: 3px solid white;
-  height: 100%;
+  height: 80%;
   position: absolute;
   left: 0;
+  top: 10%;
   opacity: 0;
 `;
 
@@ -73,7 +75,7 @@ export default class MainTitle extends Component<Props, State> {
 
   public animateTitle() {
     const cursor = this.cursorRef.current;
-    const title = this.titleRef.current;
+    // const title = this.titleRef.current;
     const titleLetters = this.titleLettersRef.current;
     const titleNumbers = this.titleNumbersRef.current;
     const subTitleLetters = this.subTitleLettersRef.current;
@@ -102,7 +104,7 @@ export default class MainTitle extends Component<Props, State> {
 
       .add({
         targets: cursor,
-        translateX: [0, title!.offsetWidth || 0],
+        translateX: [0, titleNumbers!.offsetWidth || 0],
         easing: "easeOutExpo",
         duration: 800,
         delay: 100
@@ -123,7 +125,7 @@ export default class MainTitle extends Component<Props, State> {
 
       .add({
         targets: cursor,
-        translateX: [(title && title.offsetWidth) || 0, 0],
+        translateX: [titleNumbers!.offsetWidth || 0, 0],
         easing: "easeOutExpo",
         duration: 700,
         delay: 200
