@@ -12,6 +12,7 @@ const Title = styled.h1`
 
   position: relative;
   display: inline-block;
+  font-weight: 700;
 
   span:not(:first-of-type):not(:nth-of-type(5)) {
     font-size: 0.8em;

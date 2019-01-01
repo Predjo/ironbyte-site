@@ -7,6 +7,7 @@ const SubTitle = styled.h4`
   margin-top: 0px;
   height: 1.5rem;
   line-height: 1.5rem;
+  font-weight: 700;
 
   @media screen and (max-width: ${BreakPoints.small}px) {
     font-size: 0.85rem;

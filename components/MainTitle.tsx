@@ -13,7 +13,7 @@ interface TitleProps {
 
 const TitleLetter = styled.div`
   > span {
-    opacity: ${(props: TitleProps) => (props.visible ? 1 : 1)};
+    opacity: ${(props: TitleProps) => (props.visible ? 1 : 0)};
   }
 `;
 
@@ -32,7 +32,7 @@ const TitleNumber = styled.div`
 
 const HiddenSubTitle = styled(SubTitle)`
   > span {
-    opacity: ${(props: TitleProps) => (props.visible ? 1 : 1)};
+    opacity: ${(props: TitleProps) => (props.visible ? 1 : 0)};
   }
 `;
 

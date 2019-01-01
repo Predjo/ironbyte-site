@@ -2,11 +2,12 @@ import React from "react";
 import App, { Container } from "next/app";
 
 import styled, { injectGlobal } from "styled-components";
-import { BreakPoints } from "../constants/StyleConstants";
 
 import Footer from "../components/Footer";
 
 import { ToastContainer } from "react-toastify";
+
+import "reset-css";
 import "react-toastify/dist/ReactToastify.css";
 
 injectGlobal`
@@ -34,19 +35,18 @@ injectGlobal`
 `;
 
 const Layout = styled.div`
-  margin: 0 auto;
-  max-width: 1000px;
-  text-align: center;
-  height: calc(100% - 50px);
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+`;
+
+const Content = styled.div`
+  flex: 1;
+  display: flex;
   justify-content: center;
   align-items: center;
-  display: flex;
-  padding-bottom: 50px;
-  overflow: auto;
-
-  @media screen and (max-height: ${BreakPoints.tiny}px) {
-    align-items: flex-start;
-  }
+  text-align: center;
+  flex-direction: column;
 `;
 
 export default class MyApp extends App {
@@ -68,7 +68,9 @@ export default class MyApp extends App {
     return (
       <Container>
         <Layout>
-          <Component {...pageProps} />
+          <Content>
+            <Component {...pageProps} />
+          </Content>
           <Footer>IronByte © {new Date().getFullYear()}</Footer>
         </Layout>
 

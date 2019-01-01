@@ -15,6 +15,11 @@ const Text = styled.div<TextProps>`
     color: white;
     text-decoration: none;
   }
+
+  > p {
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+  }
 `;
 
 export default Text;
