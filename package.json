@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon server/index.ts",
-    "build": "NODE_OPTIONS='--openssl-legacy-provider' next build && tsc --project tsconfig.server.json && copyfiles config/* .next/production-server/",
-    "start": "NODE_ENV=production node .next/production-server/index.js"
+    "build": "next build && tsc --project tsconfig.server.json && copyfiles config/* .next/production-server/",
+    "start": "node .next/production-server/index.js"
   },
   "keywords": [
     "ironbyte",
@@ -18,12 +18,19 @@
   "author": "Nikola Predovan",
   "license": "ISC",
   "dependencies": {
+    "animejs": "^2.2.0",
     "body-parser": "^1.18.3",
     "config": "^3.0.1",
     "express": "^4.16.4",
     "next": "^7.0.2",
     "nodemailer": "^5.0.0",
-    "yargs": "^12.0.5"
+    "styled-components": "^3.3.0",
+    "yargs": "^12.0.5",
+    "yup": "^0.26.6",
+    "copyfiles": "^2.1.0",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-toastify": "^4.5.1"
   },
   "devDependencies": {
     "@types/animejs": "^2.0.1",
@@ -42,21 +49,14 @@
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-source-maps": "0.0.3",
     "@zeit/next-typescript": "^1.1.1",
-    "animejs": "^2.2.0",
     "babel-plugin-styled-components": "^1.5.1",
-    "copyfiles": "^2.1.0",
     "fork-ts-checker-webpack-plugin": "^0.5.2",
     "formik": "^1.4.1",
     "nodemon": "^1.18.9",
-    "react": "^16.4.0",
-    "react-dom": "^16.4.0",
-    "react-toastify": "^4.5.1",
     "reset-css": "^4.0.1",
-    "styled-components": "^3.3.0",
     "ts-node": "^7.0.1",
     "tslint": "^5.12.0",
     "tslint-config-prettier": "^1.17.0",
-    "typescript": "^3.2.2",
-    "yup": "^0.26.6"
+    "typescript": "^3.2.2"
   }
 }

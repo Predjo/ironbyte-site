@@ -29,7 +29,7 @@ export default () => (
     <Text align="center">
       <p>
         IronByte is a small web development firm founded in 2018 <br /> with a
-        sole purpose of enabling developers in Croatia to work remotly for
+        sole purpose of enabling developers in Croatia to work with
         international startups.
       </p>
       <p>
@@ -44,7 +44,7 @@ export default () => (
 
     <SmallText align="center">
       IronByte društvo s ograničenom odgovornošću za računalne usluge, Ulica
-      Ivane Brlić-Mažuranić 72, Zagreb.
+      Gustava Krkleca 38A, Zagreb.
       <br />
       Društvo je upisano u sudski registar trgovačkog suda u Zagrebu, pod brojem
       081143551, OIB 00776157454.
