@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon server/index.ts",
-    "build": "next build && tsc --project tsconfig.server.json && copyfiles config/* .next/production-server/",
+    "build": "NODE_OPTIONS='--openssl-legacy-provider' next build && tsc --project tsconfig.server.json && copyfiles config/* .next/production-server/",
     "start": "NODE_ENV=production node .next/production-server/index.js"
   },
   "keywords": [
