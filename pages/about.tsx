@@ -33,8 +33,8 @@ export default () => (
         international startups.
       </p>
       <p>
-        Currently offering services of web and mobile app consulting and
-        development.
+        Currently offering services of consulting, system design and app
+        development for various industries.
       </p>
     </Text>
 

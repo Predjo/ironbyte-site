@@ -27,7 +27,7 @@ export interface State {
 
 class ContantPage extends Component<Props, State> {
   public state = {
-    emailSent: false
+    emailSent: false,
   };
 
   public sendMessage = (
@@ -38,7 +38,7 @@ class ContantPage extends Component<Props, State> {
   ) => {
     const showError = () => {
       toast.error("There was a problem with sending your message.", {
-        position: toast.POSITION.BOTTOM_RIGHT
+        position: toast.POSITION.BOTTOM_RIGHT,
       });
 
       done();
@@ -47,27 +47,27 @@ class ContantPage extends Component<Props, State> {
     fetch("/message", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         name,
         email,
-        message
-      })
+        message,
+      }),
     })
-      .then(data => {
+      .then((data) => {
         if (data.status !== 200) {
           throw new Error();
         }
 
         toast.info("Message send successfully!", {
-          position: toast.POSITION.BOTTOM_RIGHT
+          position: toast.POSITION.BOTTOM_RIGHT,
         });
 
         done();
 
         this.setState({
-          emailSent: true
+          emailSent: true,
         });
       })
       .catch(() => {
@@ -93,8 +93,8 @@ class ContantPage extends Component<Props, State> {
 
         <Text>
           You can contact us using email:{" "}
-          <a href="mailto:ironbytedoo@gmail.com">
-            <i>ironbytedoo@gmail.com</i>
+          <a href="mailto:info@ironbyte.io">
+            <i>info@ironbyte.io</i>
           </a>
           <br /> <br />
           {!emailSent ? "Or use the form below:" : null}
